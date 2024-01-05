@@ -1,0 +1,75 @@
+@mixin flexer($direction) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-material {
+    background-color: #ebeaef;
+}
+
+.col-flex {
+    @include flexer(column);
+}
+
+a {
+    text-decoration: none;
+}
+
+.sem-gradesheet {
+    @include flexer(row);
+    box-shadow: 2px 2px 5px rgb(222, 222, 222);
+    background-color: rgb(31, 114, 209);
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    transition: all 0.2s;
+    i {
+        font-size: 1.5rem;
+        margin-right: 5px;
+    }
+    i, span {
+        color: white;
+    }
+    &:hover {
+        background-color: rgb(41, 135, 242);
+    }
+}
+
+.year-gradesheet {
+    @include flexer(row);
+    box-shadow: 2px 2px 5px rgb(209, 209, 209);
+    padding: 20px 10px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    background-color: #5b7488;
+    i {
+        font-size: 2rem;
+        margin-right: 10px;
+        transition: all 300ms;
+    }
+    i, span {
+        color: #b5daff;
+    }
+    .num {
+        color: rgba(255, 255, 255, 0.4);
+        position: absolute;
+        font-size: 3rem;
+        bottom: -30%;
+        right: 0;
+        font-family: 'Silkscreen', cursive;
+        text-shadow: 0 0 10px rgba(216, 228, 231, 0.4);
+        transition: 300ms;
+    }
+    &:hover {
+        background-color: #4c687f;
+        i {
+            color: white;
+        }
+        .num {
+            color: rgba(255, 255, 255, 0.9);
+        }
+    }
+}

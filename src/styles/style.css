@@ -74,4 +74,44 @@ a {
 }
 .year-gradesheet:hover .num {
   color: rgba(255, 255, 255, 0.9);
+}
+
+.univ {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  background-color: #e1e7ee;
+}
+.univ .univ-name {
+  margin-left: 10px;
+  font-family: "Fraunces", serif;
+  font-size: 1.2rem;
+}
+
+.sscreen-font {
+  font-family: "Silkscreen", sans-serif;
+}
+
+.brand {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.brand .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+  margin-left: 5px;
+}
+.brand .info .system {
+  font-family: "Roboto Mono", monospace;
+}
+.brand .info .inst {
+  font-size: 0.9rem;
+  font-family: "Fraunces", serif;
 }/*# sourceMappingURL=style.css.map */

@@ -45,10 +45,10 @@ class BodyComponent extends Component {
       <Container>
           {
           this.props.searchBarOpen ? 
-            (<SearchBox closeSearchbar={this.props.closeSearchbar} notify={(msg, severity)=>this.handleSnackbarOpen(msg, severity)} />)
-            : (<StudentProfile />)
+            (<SearchBox setStudentData={this.props.setStudentData} closeSearchbar={this.props.closeSearchbar} notify={(msg, severity)=>this.handleSnackbarOpen(msg, severity)} />)
+            : (<StudentProfile studentData={this.props.studentData} />)
           }
-          <Snackbar open={this.state.snackbar.open} autoHideDuration={6000} onClose={this.handleSnackbarClose}>
+          <Snackbar className='shadow' open={this.state.snackbar.open} autoHideDuration={6000} onClose={this.handleSnackbarClose}>
             <Alert onClose={this.handleSnackbarClose} severity={this.state.snackbar.severity} sx={{ width: '100%' }}>
               {this.state.snackbar.message}
             </Alert>

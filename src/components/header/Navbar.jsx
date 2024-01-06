@@ -25,10 +25,10 @@ function Navabr(props) {
 
   return (
     <div>
-      <Navbar color="light" expand="sm" className="py-2 mb-3 bg-material" >
+      <Navbar color="light" expand="sm" className="py-2 mb-3 bg-material shadow-sm" >
         <NavbarBrand className='ms-4' href="/">
           <div className='brand'>
-            <img style={{width: '60px'}} alt='sys-logo' src='/lg2.svg' />
+            <img style={{width: '60px'}} alt='sys-logo' src='/static/lg2.svg' />
             <div className="info">
                 <span className='system'>Result Administration</span>
                 <span className='inst text-muted'>Sylhet Engineering College</span>

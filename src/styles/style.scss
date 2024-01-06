@@ -9,6 +9,12 @@
     background-color: #ebeaef;
 }
 
+$root-bg: rgba(183, 206, 223, 0.3);
+
+body {
+    background-color: $root-bg;
+}
+
 .col-flex {
     @include flexer(column);
 }
@@ -80,8 +86,8 @@ a {
 
 .univ {
     @include flexer(row);
-    padding: 10px 0;
-    background-color: #e1e7ee;
+    padding: 12px 0;
+    background-image: linear-gradient(to bottom right, aliceblue, #d9e4de);
     .univ-name {
         margin-left: 10px;
         font-family: 'Fraunces', serif;
@@ -108,5 +114,45 @@ a {
             font-family: 'Fraunces', serif;
         }
         
+    }
+}
+
+.searchbox-container {
+    @include flexer(column);
+    margin-top: 6rem;
+    .searchbox {
+        position: relative;
+        border-radius: 180px;
+        background-color: white;
+        border: 8px solid rgb(255, 255, 255);
+        box-shadow: -5px 0px 10px rgba(110, 136, 144, 0.1);
+        input {
+            background-color: inherit;
+            width: 350px;
+            text-align: left;
+            border-radius: 180px;
+            padding: 0 130px 0 50px;
+            border: 0;
+            font-size: 1.4rem;
+            color: #4c687f;
+            &:focus {
+                outline: none !important;
+            }
+        }
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 180px;
+            height: 100%;
+            width: 7rem;
+        }
+        &:focus-within {
+            outline: 1px solid rgb(183, 194, 206);
+        }
+    }
+    img {
+        margin-top: 10px;
+        width: 15rem;
     }
 }

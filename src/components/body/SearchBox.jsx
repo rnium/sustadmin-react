@@ -13,24 +13,30 @@ const SearchBox = (props) => {
         }
         axios.get(BackendUrls.studentDataAPI + registration)
             .then(response => response.data)
-            .then(data => props.notify(data?.student?.name, "info"))
-            // .catch(error => props.closeSearchbar())
+            .then(data => {
+                props.setStudentData(data);
+            })
             .catch(error => props.notify(error.message, "error"))
     }
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          getInfo();
+        }
+    };
     return (
-        <Box
-            display="flex" alignItems="center" justifyContent="center" sx={{ mt: 10 }}
-        >
-            <TextField
-                id="standard-basic"
-                sx={{ width: '250px', textAlign: 'center' }}
-                label="Registration Number"
-                variant="standard"
-                size="small"
-                onChange={event => setRegistration(event.target.value)}
-            />
-            <Button onClick={getInfo} className='ms-3' variant="contained" startIcon={<SearchIcon />} >Search</Button>
-        </Box>
+        <div className='searchbox-container'>
+            <div className='searchbox'>
+                <input 
+                    type="text" 
+                    placeholder='Registration No.'
+                    value={registration}
+                    onKeyDown={handleKeyDown}
+                    onChange={event => setRegistration(event.target.value)}
+                />
+                <Button onClick={getInfo} variant="contained">Search</Button>
+            </div>
+            <img src='/static/search.svg' alt='search' />
+        </div>
     )
 }
 

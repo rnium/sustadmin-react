@@ -54,7 +54,9 @@ class BodyComponent extends Component {
                     handleSnackbarOpen={(msg, severity)=>this.handleSnackbarOpen(msg, severity)} />
               } 
             />
-            <Route exact path='/sust/custom/' element={<CustomTool />} />
+            <Route exact path='/sust/custom/' element={
+              <CustomTool handleSnackbarOpen={(msg, severity)=>this.handleSnackbarOpen(msg, severity)} />
+            } />
             <Route path='/sust/profile/' element={<EditProfile />} />
           </Routes>
           

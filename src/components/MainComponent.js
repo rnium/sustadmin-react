@@ -3,14 +3,33 @@ import Header from './header/HeaderComponent'
 import BodyComponent from './body/BodyComponent'
 
 class MainComponent extends Component {
-  // componentDidMount() {
-  //   console.log("mouned");
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      studentData: null,
+      searchBarOpen: true
+    }
+  }
+
+  openSearchbar = () => {
+    this.setState({
+      ...this.state,
+      searchBarOpen: true
+    })
+  }
+  
+  closeSearchbar = () => {
+    this.setState({
+      ...this.state,
+      searchBarOpen: false
+    })
+  }
+
   render() {
     return (
       <div>
-          <Header />
-          <BodyComponent />
+          <Header searchBarOpen={this.state.searchBarOpen} openSearchbar={this.openSearchbar} />
+          <BodyComponent studentData={this.state.studentData} searchBarOpen={this.state.searchBarOpen} closeSearchbar={this.closeSearchbar}  />
       </div>
     )
   }

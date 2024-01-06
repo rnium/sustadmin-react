@@ -16,19 +16,19 @@ import {
 import Button from '@mui/material/Button'
 import UserInfo from './UserInfo';
 import LogoutIcon from '@mui/icons-material/Logout';
-import {Typography, Stack} from '@mui/material'
+import YoutubeSearchedForIcon from '@mui/icons-material/YoutubeSearchedFor';
 
-function Example(args) {
+function Navabr(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
-      <Navbar color="light" expand="sm" className="py-3 mb-3 bg-material" >
+      <Navbar color="light" expand="sm" className="py-2 mb-3 bg-material" >
         <NavbarBrand className='ms-4' href="/">
           <div className='brand'>
-            <img style={{width: '50px'}} alt='sys-logo' src='lg2.svg' />
+            <img style={{width: '60px'}} alt='sys-logo' src='/lg2.svg' />
             <div className="info">
                 <span className='system'>Result Administration</span>
                 <span className='inst text-muted'>Sylhet Engineering College</span>
@@ -37,7 +37,7 @@ function Example(args) {
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="me-auto ms-5" navbar>
+          <Nav className="me-auto ms-5 row-flexer" navbar>
             <NavItem>
               <NavLink href="/components/">Components</NavLink>
             </NavItem>
@@ -46,17 +46,13 @@ function Example(args) {
                 GitHub
               </NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            {
+              props.searchBarOpen ?
+                null
+                : (<NavItem>
+                    <Button onClick={()=>props.openSearchbar()} variant="outlined" startIcon={<YoutubeSearchedForIcon size="large" />}>Search</Button>
+                  </NavItem>)
+            }
           </Nav>
           <UserInfo username="Rnium" avatarSrc="https://upload.wikimedia.org/wikipedia/commons/3/32/Star_Wars_-_Darth_Vader.jpg" />
           <Button 
@@ -75,4 +71,4 @@ function Example(args) {
   );
 }
 
-export default Example;
+export default Navabr;

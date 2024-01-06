@@ -13,6 +13,10 @@
     @include flexer(column);
 }
 
+.row-flexer {
+    @include flexer(row);
+}
+
 a {
     text-decoration: none;
 }
@@ -96,11 +100,11 @@ a {
         align-items: flex-start;
         margin-left:5px;
         .system {
-            // color: #5f97f5;
+            color: #7887a0;
+            font-size: 0.9rem;
             font-family: 'Roboto Mono', monospace;
         }
         .inst {
-            font-size: 0.9rem;
             font-family: 'Fraunces', serif;
         }
         

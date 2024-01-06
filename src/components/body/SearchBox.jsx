@@ -1,13 +1,20 @@
-import { React } from 'react'
+import { React, useState } from 'react'
 import { Button, Box, TextField } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios'
+import * as BackendUrls from '../../BackendUrls'
 
 const SearchBox = (props) => {
+    const [registration, setRegistration] = useState('')
     const getInfo = () => {
-        axios.get('http://127.0.0.1:8000/results/api/sust-studentdata/')
+        if (registration.length === 0) {
+            props.notify("Please enter registration number", "warning");
+            return;
+        }
+        axios.get(BackendUrls.studentDataAPI + registration)
             .then(response => response.data)
-            .then(data => console.log(data))
+            .then(data => props.notify(data?.student?.name, "info"))
+            // .catch(error => props.closeSearchbar())
             .catch(error => props.notify(error.message, "error"))
     }
     return (
@@ -20,7 +27,7 @@ const SearchBox = (props) => {
                 label="Registration Number"
                 variant="standard"
                 size="small"
-                
+                onChange={event => setRegistration(event.target.value)}
             />
             <Button onClick={getInfo} className='ms-3' variant="contained" startIcon={<SearchIcon />} >Search</Button>
         </Box>

@@ -7,6 +7,7 @@ class BodyComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      studentData: null,
       snackbar: {
         open: false,
         message: "",
@@ -42,8 +43,11 @@ class BodyComponent extends Component {
   render() {
     return (
       <Container>
-          <SearchBox notify={(msg, severity)=>this.handleSnackbarOpen(msg, severity)} />
-          <StudentProfile />
+          {
+          this.props.searchBarOpen ? 
+            (<SearchBox closeSearchbar={this.props.closeSearchbar} notify={(msg, severity)=>this.handleSnackbarOpen(msg, severity)} />)
+            : (<StudentProfile />)
+          }
           <Snackbar open={this.state.snackbar.open} autoHideDuration={6000} onClose={this.handleSnackbarClose}>
             <Alert onClose={this.handleSnackbarClose} severity={this.state.snackbar.severity} sx={{ width: '100%' }}>
               {this.state.snackbar.message}

@@ -2,11 +2,11 @@ import React from 'react'
 import TopBanner from './TopBanner';
 import Navbar from './Navbar'
 
-export const HeaderComponent = () => {
+export const HeaderComponent = (props) => {
   return (
     <div>
       <TopBanner />
-      <Navbar />
+      <Navbar searchBarOpen={props.searchBarOpen} openSearchbar={props.openSearchbar} />
     </div>
   )
 }

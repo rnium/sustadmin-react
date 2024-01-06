@@ -6,17 +6,13 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from 'reactstrap';
 
 import Button from '@mui/material/Button'
 import UserInfo from './UserInfo';
 import LogoutIcon from '@mui/icons-material/Logout';
 import YoutubeSearchedForIcon from '@mui/icons-material/YoutubeSearchedFor';
+import { NavLink } from 'react-router-dom';
 
 function Navabr(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,12 +35,13 @@ function Navabr(props) {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto ms-5 row-flexer" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink to="/sust/" className='nav-link'>Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
-              </NavLink>
+              <NavLink to="/sust/custom/" className='nav-link'>CustomDoc</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/sust/profile/" className='nav-link'>Profile</NavLink>
             </NavItem>
             {
               props.searchBarOpen ?

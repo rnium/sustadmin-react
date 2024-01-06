@@ -1,18 +1,18 @@
 import React from 'react'
-import SearchBox from './SearchV2'
+import SearchBox from './SearchBox'
 import StudentProfile from './StudentProfile'
 
 const Home = (props) => {
     if (props.searchBarOpen) {
-        return (<StudentProfile studentData={props.studentData} />)
-    } else {
         return (
             <SearchBox 
                 setStudentData={props.setStudentData} 
                 closeSearchbar={props.closeSearchbar} 
-                notify={(msg, severity) => props.handleSnackbarOpen(msg, severity)} 
+                handleSnackbarOpen={(msg, severity) => props.handleSnackbarOpen(msg, severity)} 
             />
         )
+    } else {
+        return (<StudentProfile studentData={props.studentData} />)
     }
   
 }

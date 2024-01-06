@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import SearchBox from './SearchBox'
-import StudentProfile from './StudentProfile'
 import {Container, Snackbar, Alert} from '@mui/material'
+import Home from './Home'
+import CustomTool from './CustomTool'
+import EditProfile from './EditProfile'
+import {Routes, Route} from 'react-router-dom'
 
 class BodyComponent extends Component {
   constructor(props) {
@@ -43,11 +45,19 @@ class BodyComponent extends Component {
   render() {
     return (
       <Container>
-          {
-          this.props.searchBarOpen ? 
-            (<SearchBox setStudentData={this.props.setStudentData} closeSearchbar={this.props.closeSearchbar} notify={(msg, severity)=>this.handleSnackbarOpen(msg, severity)} />)
-            : (<StudentProfile studentData={this.props.studentData} />)
-          }
+          <Routes>
+            <Route exact path='/sust/' element={
+              <Home searchBarOpen={this.props.searchBarOpen} 
+                    studentData={this.props.studentData} 
+                    setStudentData={this.props.setStudentData} 
+                    closeSearchbar={this.props.closeSearchbar} 
+                    handleSnackbarOpen={(msg, severity)=>this.handleSnackbarOpen(msg, severity)} />
+              } 
+            />
+            <Route exact path='/sust/custom/' element={<CustomTool />} />
+            <Route path='/sust/profile/' element={<EditProfile />} />
+          </Routes>
+          
           <Snackbar className='shadow' open={this.state.snackbar.open} autoHideDuration={6000} onClose={this.handleSnackbarClose}>
             <Alert onClose={this.handleSnackbarClose} severity={this.state.snackbar.severity} sx={{ width: '100%' }}>
               {this.state.snackbar.message}

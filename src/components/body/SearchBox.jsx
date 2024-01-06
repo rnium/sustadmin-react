@@ -6,17 +6,24 @@ import * as BackendUrls from '../../BackendUrls'
 
 const SearchBox = (props) => {
     const [registration, setRegistration] = useState('')
+    const [isSearching, setIsSearching] = useState(false)
     const getInfo = () => {
         if (registration.length === 0) {
-            props.notify("Please enter registration number", "warning");
+            props.handleSnackbarOpen("Please enter registration number", "warning");
             return;
         }
+        setIsSearching(true);
         axios.get(BackendUrls.studentDataAPI + registration)
             .then(response => response.data)
             .then(data => {
                 props.setStudentData(data);
             })
-            .catch(error => props.notify(error.message, "error"))
+            .catch(error => {
+                props.handleSnackbarOpen(error.message, "error");
+            })
+            .finally(() => {
+                setIsSearching(false);
+            })
     }
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -33,7 +40,7 @@ const SearchBox = (props) => {
                     onKeyDown={handleKeyDown}
                     onChange={event => setRegistration(event.target.value)}
                 />
-                <Button onClick={getInfo} variant="contained">Search</Button>
+                <Button disabled={isSearching} onClick={getInfo} variant="contained">Search</Button>
             </div>
             <img src='/static/search.svg' alt='search' />
         </div>

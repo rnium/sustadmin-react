@@ -51,7 +51,7 @@ const CustomTool = (props) => {
                 <label for="formFile" className="form-label">Select Excel File</label>
                 <input onChange={e => handleFileChange(e)} className="form-control" accept=".xlsx" type="file" id="excelFile" />
                 <div className="d-flex justify-content-end mt-2">
-                    <Button onClick={handleUpload} color='secondary' style={{borderRadius: "180px", padding: "5px 25px"}} variant="contained" href="#outlined-buttons" startIcon={<CloudUploadIcon />}>
+                    <Button onClick={handleUpload} color='secondary' style={{borderRadius: "180px", padding: "5px 25px"}} variant="contained" startIcon={<CloudUploadIcon />}>
                         Export
                     </Button>
                 </div>

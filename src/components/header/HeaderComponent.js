@@ -6,7 +6,7 @@ export const HeaderComponent = (props) => {
   return (
     <div>
       <TopBanner />
-      <Navbar searchBarOpen={props.searchBarOpen} openSearchbar={props.openSearchbar} />
+      <Navbar userInfo={props.userInfo} searchBarOpen={props.searchBarOpen} openSearchbar={props.openSearchbar} />
     </div>
   )
 }

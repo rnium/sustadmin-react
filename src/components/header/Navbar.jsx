@@ -13,12 +13,13 @@ import UserInfo from './UserInfo';
 import LogoutIcon from '@mui/icons-material/Logout';
 import YoutubeSearchedForIcon from '@mui/icons-material/YoutubeSearchedFor';
 import { NavLink } from 'react-router-dom';
+import {logoutUrl} from '../../BackendUrls'
 
 function Navabr(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-
+  console.log(props.userInfo);
   return (
     <div>
       <Navbar color="light" expand="sm" className="py-2 mb-3 bg-material shadow-sm" >
@@ -40,9 +41,9 @@ function Navabr(props) {
             <NavItem>
               <NavLink to="/sust/custom/" className='nav-link'>CustomDoc</NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink to="/sust/profile/" className='nav-link'>Profile</NavLink>
-            </NavItem>
+            </NavItem> */}
             {
               props.searchBarOpen ?
                 null
@@ -51,11 +52,12 @@ function Navabr(props) {
                   </NavItem>)
             }
           </Nav>
-          <UserInfo username="Rnium" avatarSrc="https://upload.wikimedia.org/wikipedia/commons/3/32/Star_Wars_-_Darth_Vader.jpg" />
+          <UserInfo username={props.userInfo.firstname} avatarSrc={props.userInfo.avatar_url} />
           <Button 
             variant="outlined"
             color='error'
             endIcon={<LogoutIcon />}
+            href={logoutUrl}
             sx={{ 
               borderRadius: "180px",
               margin: "0 15px", }}

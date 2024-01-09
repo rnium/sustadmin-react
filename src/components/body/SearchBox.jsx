@@ -40,9 +40,10 @@ const SearchBox = (props) => {
                     onKeyDown={handleKeyDown}
                     onChange={event => setRegistration(event.target.value)}
                 />
+                <img src="/static/search.svg" alt="search_icon" className='icon' />
                 <Button disabled={isSearching} onClick={getInfo} variant="contained">Search</Button>
             </div>
-            <img src='/static/search.svg' alt='search' />
+            <img src='/static/binocular-multipurpose-usecase.png' alt='search' />
         </div>
     )
 }

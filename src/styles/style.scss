@@ -147,12 +147,27 @@ a {
             height: 100%;
             width: 7rem;
         }
+        img.icon {
+            width: 30px;
+            position: absolute;
+            top: 0;
+            left: 5px;
+            transform: translateY(-20%);
+            // background-color: #5b7488;
+            transition: all 0.2s;
+            filter: grayscale(100%);
+        }
         &:focus-within {
             outline: 1px solid rgb(183, 194, 206);
+            img.icon {
+                width: 35px;
+                transform: translateY(-22%);
+                filter: grayscale(0);
+            }
         }
     }
     img {
         margin-top: 10px;
-        width: 15rem;
+        width: 22rem;
     }
 }

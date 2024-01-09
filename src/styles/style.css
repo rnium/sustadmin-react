@@ -163,10 +163,24 @@ a {
   height: 100%;
   width: 7rem;
 }
+.searchbox-container .searchbox img.icon {
+  width: 30px;
+  position: absolute;
+  top: 0;
+  left: 5px;
+  transform: translateY(-20%);
+  transition: all 0.2s;
+  filter: grayscale(100%);
+}
 .searchbox-container .searchbox:focus-within {
   outline: 1px solid rgb(183, 194, 206);
 }
+.searchbox-container .searchbox:focus-within img.icon {
+  width: 35px;
+  transform: translateY(-22%);
+  filter: grayscale(0);
+}
 .searchbox-container img {
   margin-top: 10px;
-  width: 15rem;
+  width: 22rem;
 }/*# sourceMappingURL=style.css.map */

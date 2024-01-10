@@ -7,11 +7,16 @@ import * as urls from '../../BackendUrls'
 
 const CustomTool = (props) => {
     const [selectedFile, setSelectedFile] = useState(null);
-
+    const [docUrl, setDocUrl] = useState(urls.excelTemplateUrl);
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
     };
-
+    let btnText = "Download Template";
+    let btnColor = "primary";
+    if (docUrl !== urls.excelTemplateUrl) {
+        btnText = "Download Document";
+        btnColor = "success";
+    }
     const handleUpload = async () => {
         if (selectedFile) {
             try {
@@ -22,7 +27,7 @@ const CustomTool = (props) => {
                         'Content-Type': 'multipart/form-data',
                     },
                 });
-
+                setDocUrl(urls.baseUrl+response.data.url)
                 props.handleSnackbarOpen('Complete', 'success')
             } catch (error) {
                 props.handleSnackbarOpen('Error uploading file', 'error')
@@ -42,8 +47,8 @@ const CustomTool = (props) => {
                     <li className="text-success ">Verify the data and the specified formatting before exporting.</li>
                 </ul>
                 <div className="container row-flexer mt-3">
-                    <Button variant="contained" href={urls.excelTemplateUrl} startIcon={<DownloadRoundedIcon />}>
-                        Download Template
+                    <Button variant="contained" color={btnColor} href={docUrl} target="_blank" startIcon={<DownloadRoundedIcon />}>
+                       {btnText}
                     </Button>
                 </div>
             </div>
@@ -52,7 +57,7 @@ const CustomTool = (props) => {
                 <input onChange={e => handleFileChange(e)} className="form-control" accept=".xlsx" type="file" id="excelFile" />
                 <div className="d-flex justify-content-end mt-2">
                     <Button onClick={handleUpload} color='secondary' style={{borderRadius: "180px", padding: "5px 25px"}} variant="contained" startIcon={<CloudUploadIcon />}>
-                        Export
+                        Render
                     </Button>
                 </div>
             </div>

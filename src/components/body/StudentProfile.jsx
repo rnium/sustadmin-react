@@ -2,6 +2,7 @@ import React from 'react'
 import { Grid, Box, Button } from '@mui/material'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import DownloadIcon from '@mui/icons-material/Download';
+import * as urls from '../../BackendUrls';
 
 
 const StudentProfile = (props) => {
@@ -28,7 +29,7 @@ const StudentProfile = (props) => {
                 <Grid item xs={12} md={7} >
                     <div className="mb-4 bg-light shadow-sm py-3 rounded">
                         <div className="text-center">
-                            <img src={props.studentData.student.avatar_url} alt="avatar"
+                            <img src={ urls.baseUrl + props.studentData.student.avatar_url} alt="avatar"
                                 className="rounded-circle img-fluid" style={{ width: '150px' }} />
                             <h5 className="my-3">{props.studentData.student.name}</h5>
                             <p className="text-muted mb-1">{props.studentData.student.registration}</p>

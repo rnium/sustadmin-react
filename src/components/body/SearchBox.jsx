@@ -19,7 +19,8 @@ const SearchBox = (props) => {
                 props.setStudentData(data);
             })
             .catch(error => {
-                props.handleSnackbarOpen(error.message, "error");
+                console.log(error);
+                props.handleSnackbarOpen("("+error.response.status+") "+error.response.statusText, "error");
             })
             .finally(() => {
                 setIsSearching(false);

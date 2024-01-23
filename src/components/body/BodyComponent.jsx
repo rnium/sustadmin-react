@@ -47,6 +47,7 @@ class BodyComponent extends Component {
       <Container>
           <Routes>
             <Route path='/' element={<Navigate to="/sust/home/" />} />
+            <Route path='/sust/' element={<Navigate to="/sust/home/" />} />
             <Route exact path='/sust/home/' element={
               <Home searchBarOpen={this.props.searchBarOpen} 
                     studentData={this.props.studentData} 

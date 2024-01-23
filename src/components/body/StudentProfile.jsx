@@ -77,17 +77,21 @@ const StudentProfile = (props) => {
                     </div>
                 </Grid>
                 <Grid item xs={12} md={5}>
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        href={props.studentData.full_document_url}
-                        target="_blank"
-                        sx={{ width: '100%', borderRadius: "180px" }}
-                        size="large"
-                        startIcon={<DownloadIcon />}
-                    >
-                        Download Full Document
-                    </Button>
+                    {
+                        props.studentData.full_document_url ?
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            href={urls.baseUrl + props.studentData.full_document_url}
+                            target="_blank"
+                            sx={{ width: '100%', borderRadius: "180px" }}
+                            size="large"
+                            startIcon={<DownloadIcon />}
+                        >
+                            Download Full Document
+                        </Button>
+                        : null
+                    }
 
                     <div className="mt-3">
                         <p className="mb-2 text-center"><span className="roboto-font text-muted fs-5">Grade Sheets</span></p>

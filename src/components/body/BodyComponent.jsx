@@ -3,7 +3,7 @@ import {Container, Snackbar, Alert} from '@mui/material'
 import Home from './Home'
 import CustomTool from './CustomTool'
 import EditProfile from './EditProfile'
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, Navigate} from 'react-router-dom'
 
 class BodyComponent extends Component {
   constructor(props) {
@@ -46,7 +46,8 @@ class BodyComponent extends Component {
     return (
       <Container>
           <Routes>
-            <Route exact path='/sust/' element={
+            <Route path='/' element={<Navigate to="/sust/home/" />} />
+            <Route exact path='/sust/home/' element={
               <Home searchBarOpen={this.props.searchBarOpen} 
                     studentData={this.props.studentData} 
                     setStudentData={this.props.setStudentData} 
@@ -54,7 +55,7 @@ class BodyComponent extends Component {
                     handleSnackbarOpen={(msg, severity)=>this.handleSnackbarOpen(msg, severity)} />
               } 
             />
-            <Route exact path='/sust/custom/' element={
+            <Route exact path='/sust/customdoc/' element={
               <CustomTool handleSnackbarOpen={(msg, severity)=>this.handleSnackbarOpen(msg, severity)} />
             } />
             <Route path='/sust/profile/' element={<EditProfile />} />

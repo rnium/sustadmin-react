@@ -1,6 +1,5 @@
 import { React, useState } from 'react'
-import { Button, Box, TextField } from '@mui/material'
-import SearchIcon from '@mui/icons-material/Search';
+import { Button } from '@mui/material'
 import axios from 'axios'
 import * as BackendUrls from '../../BackendUrls'
 
@@ -20,7 +19,11 @@ const SearchBox = (props) => {
             })
             .catch(error => {
                 console.log(error);
-                props.handleSnackbarOpen("("+error.response.status+") "+error.response.statusText, "error");
+                try {
+                    props.handleSnackbarOpen("("+error.response.status+") "+error.response.statusText, "error");
+                } catch (err) {
+                    props.handleSnackbarOpen("Error Occurred!", "error");
+                }
             })
             .finally(() => {
                 setIsSearching(false);

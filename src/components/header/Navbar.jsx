@@ -36,10 +36,10 @@ function Navabr(props) {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto ms-5 row-flexer" navbar>
             <NavItem>
-              <NavLink to="/sust/" className='nav-link'>Home</NavLink>
+              <NavLink to="/sust/home/" className='nav-link'>Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/sust/custom/" className='nav-link'>CustomDoc</NavLink>
+              <NavLink to="/sust/customdoc/" className='nav-link'>CustomDoc</NavLink>
             </NavItem>
             {/* <NavItem>
               <NavLink to="/sust/profile/" className='nav-link'>Profile</NavLink>

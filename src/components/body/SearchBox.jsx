@@ -18,7 +18,6 @@ const SearchBox = (props) => {
                 props.setStudentData(data);
             })
             .catch(error => {
-                console.log(error);
                 try {
                     props.handleSnackbarOpen("("+error.response.status+") "+error.response.statusText, "error");
                 } catch (err) {

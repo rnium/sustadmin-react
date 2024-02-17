@@ -15,7 +15,24 @@ const StudentProfile = (props) => {
             </a>
         </div>
     ))
+    let custom_semester_gradesheets = props.studentData.custom_semester_gradesheets.map(sem => (
+        <div key={sem.semester_number} className="col-md-6" href="#">
+            <a className="sem-gradesheet" href={urls.baseUrl + sem.url} target="_blank">
+                <i className='bx bxs-file-pdf'></i>
+                <span>{sem.semester_number}{sem.semester_suffix} Semester</span>
+            </a>
+        </div>
+    ))
     let year_gradesheets = props.studentData.year_gradesheets.map(year => (
+        <div key={year.year_number} className="col-md-12" href="#">
+            <a className="year-gradesheet y1" href={ urls.baseUrl + year.url} target="_blank">
+                <i className='bx bxs-file-pdf'></i>
+                <span>{year.year_number}{year.year_suffix} Year Gradesheet</span>
+                <span className="num">{year.year_number}</span>
+            </a>
+        </div>
+    ))
+    let custom_yearly_gradesheets = props.studentData.custom_yearly_gradesheets.map(year => (
         <div key={year.year_number} className="col-md-12" href="#">
             <a className="year-gradesheet y1" href={ urls.baseUrl + year.url} target="_blank">
                 <i className='bx bxs-file-pdf'></i>
@@ -87,13 +104,15 @@ const StudentProfile = (props) => {
                         size="large"
                         startIcon={<DownloadIcon />}
                     >
-                        Download Full Document
+                        Download All GradeSheets
                     </Button>
 
                     <div className="mt-3">
                         <p className="mb-2 text-center"><span className="roboto-font text-muted fs-5">Grade Sheets</span></p>
                         <div className="row g-1 row-cols-2 mb-2">
+                            {custom_semester_gradesheets}
                             {semester_gradesheets}
+                            {custom_yearly_gradesheets}
                             {year_gradesheets}
                         </div>
                     </div>
@@ -108,21 +127,6 @@ const StudentProfile = (props) => {
                     >
                         Academic Transcript
                     </Button>
-                    {
-                        props.studentData.customdoc_url ?
-                        <Button
-                            variant="outlined"
-                            color="primary"
-                            href={urls.baseUrl + props.studentData.customdoc_url}
-                            target="_blank"
-                            sx={{ width: '100%', marginTop: "1rem", height: "4rem" }}
-                            size="large"
-                            startIcon={<FilePresentIcon />}
-                        >
-                            Custom Transcript & Gradesheets
-                        </Button>
-                        : null
-                    }
                 </Grid>
             </Grid>
         </Box>

@@ -1,3 +1,4 @@
+// export const baseUrl = "http://localhost:8000";
 export const baseUrl = "";
 export const studentDataAPI = baseUrl + "/results/api/sust-studentdata/?registration=";
 export const excelTemplateUrl = baseUrl + "/customdoc/downloadtemplate/";

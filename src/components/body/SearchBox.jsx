@@ -4,14 +4,16 @@ import axios from 'axios'
 import * as BackendUrls from '../../BackendUrls'
 
 const SearchBox = (props) => {
+    const [registration, setRegistration] = useState('')
+    const [dept, setDept] = useState('cse')
     const [isSearching, setIsSearching] = useState(false)
     const getInfo = () => {
-        if (props.searchBoxProps.registration.length === 0) {
+        if (registration.length === 0) {
             props.handleSnackbarOpen("Please enter registration number", "warning");
             return;
         }
         setIsSearching(true);
-        axios.get(BackendUrls.studentDataAPI + props.searchBoxProps.registration + "&dept=" + props.searchBoxProps.dept)
+        axios.get(BackendUrls.studentDataAPI + registration + "&dept=" + dept)
             .then(response => response.data)
             .then(data => {
                 props.setStudentData(data);
@@ -34,7 +36,7 @@ const SearchBox = (props) => {
     };
     const handleToggle = (event, newDept) => {
         if (newDept) {
-          props.searchBoxPropsChanger('dept', newDept);
+          setDept(newDept)
         }
       };
     return (
@@ -43,16 +45,16 @@ const SearchBox = (props) => {
                 <input 
                     type="text" 
                     placeholder='Registration No.'
-                    value={props.searchBoxProps.registration}
+                    value={registration}
                     onKeyDown={handleKeyDown}
-                    onChange={event => props.searchBoxPropsChanger('registration', event.target.value)}
+                    onChange={event => setRegistration(event.target.value)}
                 />
                 <img src="/static/search.svg" alt="search_icon" className='icon' />
                 <Button disabled={isSearching} onClick={getInfo} variant="contained">Search</Button>
             </div>
             <ToggleButtonGroup
                 color="secondary"
-                value={props.searchBoxProps.dept}
+                value={dept}
                 exclusive
                 onChange={handleToggle}
                 aria-label="Platform"

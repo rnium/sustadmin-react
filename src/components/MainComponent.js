@@ -11,7 +11,7 @@ class MainComponent extends Component {
     super(props);
     this.state = {
       userInfo: {
-        hasLoaded: false,
+        hasLoaded: true,
         loadingError: null,
         firstname: "",
         lastname: "",

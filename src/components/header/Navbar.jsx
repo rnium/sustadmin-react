@@ -35,12 +35,12 @@ function Navabr(props) {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto ms-5 row-flexer" navbar>
-            <NavItem>
+            {/* <NavItem>
               <NavLink to="/sust/home/" className='nav-link'>Home</NavLink>
             </NavItem>
             <NavItem>
               <NavLink to="/sust/customdoc/" className='nav-link'>CustomDoc</NavLink>
-            </NavItem>
+            </NavItem> */}
             {/* <NavItem>
               <NavLink to="/sust/profile/" className='nav-link'>Profile</NavLink>
             </NavItem> */}

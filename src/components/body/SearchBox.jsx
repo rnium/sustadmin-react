@@ -4,8 +4,8 @@ import axios from 'axios'
 import * as BackendUrls from '../../BackendUrls'
 
 const SearchBox = (props) => {
-    const [registration, setRegistration] = useState('')
-    const [dept, setDept] = useState('cse')
+    const [registration, setRegistration] = useState(localStorage?.getItem('reg')? localStorage?.getItem('reg') : '');
+    const [dept, setDept] = useState(localStorage?.getItem('dept')? localStorage?.getItem('dept') : 'cse');
     const [isSearching, setIsSearching] = useState(false)
     const getInfo = () => {
         if (registration.length === 0) {
@@ -34,11 +34,16 @@ const SearchBox = (props) => {
           getInfo();
         }
     };
+    const handleRegChange = e => {
+        setRegistration(e.target.value);
+        localStorage.setItem('reg', e.target.value);
+    }
     const handleToggle = (event, newDept) => {
         if (newDept) {
-          setDept(newDept)
+          setDept(newDept);
+          localStorage.setItem('dept', newDept);
         }
-      };
+    };
     return (
         <div className='searchbox-container'>
             <div className='searchbox'>
@@ -47,7 +52,7 @@ const SearchBox = (props) => {
                     placeholder='Registration No.'
                     value={registration}
                     onKeyDown={handleKeyDown}
-                    onChange={event => setRegistration(event.target.value)}
+                    onChange={handleRegChange}
                 />
                 <img src="/static/search.svg" alt="search_icon" className='icon' />
                 <Button disabled={isSearching} onClick={getInfo} variant="contained">Search</Button>

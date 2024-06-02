@@ -27,7 +27,7 @@ function Navabr(props) {
           <div className='brand'>
             <img style={{width: '60px'}} alt='sys-logo' src='/static/lg2.svg' />
             <div className="info">
-                <span className='system'>Result Administration</span>
+                <span className='system'>Undergraduate Result Portal</span>
                 <span className='inst text-muted'>Sylhet Engineering College</span>
             </div>
           </div>
@@ -52,7 +52,7 @@ function Navabr(props) {
                   </NavItem>)
             }
           </Nav>
-          <UserInfo username={props.userInfo.firstname} avatarSrc={props.userInfo.avatar_url} />
+          <UserInfo username={props.userInfo.firstname + " " + props.userInfo.lastname} avatarSrc={props.userInfo.avatar_url} />
           <Button 
             variant="outlined"
             color='error'
